@@ -32,6 +32,7 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="List.h" />
+		<Unit filename="Stack.h" />
 		<Unit filename="test.c">
 			<Option compilerVar="CC" />
 		</Unit>

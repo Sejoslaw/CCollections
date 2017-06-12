@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/// Testing library
 #include "List.h"
+#include "Stack.h"
 
 int main(int argc, char *argv[])
 {
@@ -60,6 +60,18 @@ int main(int argc, char *argv[])
     y1 = cc_list_get(list, 1);
     printf("X = %i\n", *x1);
     printf("Y = %i\n", *y1);
+#endif
+
+#if 0
+    /// Stack Test
+    Stack *stack = cc_stack_new();
+    printf("Is Stack empty ? => %i\n", cc_stack_empty(stack));
+    for (int i = 0; i < 10; ++i)
+        cc_stack_push(stack, i);
+    printf("Is Stack empty ? => %i\n", cc_stack_empty(stack));
+    printf("Current top value (peek) = %i\n", cc_stack_peek(stack));
+    printf("Current top value (pop) = %i\n", cc_stack_pop(stack));
+    printf("Current top value (peek) = %i\n", cc_stack_peek(stack));
 #endif
 
     return 0;
