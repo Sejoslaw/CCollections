@@ -73,6 +73,10 @@ CC_BOOL cc_stack_empty(Stack* s)
 */
 void* cc_stack_peek(Stack* s)
 {
+    /// Return NULL if given Stack is empty
+    if (cc_stack_empty(s)) return NULL;
+
+    /// Return value from top element from given Stack
     return s->top_element->value;
 }
 
@@ -84,6 +88,9 @@ void* cc_stack_peek(Stack* s)
 */
 void* cc_stack_pop(Stack* s)
 {
+    /// Return NULL if given Stack is empty
+    if (cc_stack_empty(s)) return NULL;
+
     /// Top element
     StackElement *top = s->top_element;
     /// Top element value
