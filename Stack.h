@@ -25,7 +25,7 @@ typedef unsigned char CC_BOOL;
 #define CC_TRUE 1
 #define CC_FALSE 0
 
-/// Definition of single StackElement
+/// Definition of single element on Stack
 typedef struct StackElement
 {
     void* value;
@@ -48,7 +48,7 @@ typedef struct Stack
 Stack* cc_stack_new()
 {
     Stack *new_stack = malloc(sizeof(Stack));
-    new_stack->top_element = 0;
+    new_stack->top_element = NULL;
 
     return new_stack;
 }
@@ -59,7 +59,7 @@ Stack* cc_stack_new()
     @return
         Returns CC_TRUE if the given Stack contains no elements.
 */
-CC_BOOL cc_stack_empty(Stack* s)
+CC_BOOL cc_stack_is_empty(Stack* s)
 {
     if (!s->top_element) return CC_TRUE;
     return CC_FALSE;
@@ -74,7 +74,7 @@ CC_BOOL cc_stack_empty(Stack* s)
 void* cc_stack_peek(Stack* s)
 {
     /// Return NULL if given Stack is empty
-    if (cc_stack_empty(s)) return NULL;
+    if (cc_stack_is_empty(s)) return NULL;
 
     /// Return value from top element from given Stack
     return s->top_element->value;
@@ -89,7 +89,7 @@ void* cc_stack_peek(Stack* s)
 void* cc_stack_pop(Stack* s)
 {
     /// Return NULL if given Stack is empty
-    if (cc_stack_empty(s)) return NULL;
+    if (cc_stack_is_empty(s)) return NULL;
 
     /// Top element
     StackElement *top = s->top_element;
@@ -119,6 +119,28 @@ void* cc_stack_push(Stack* s, void* element)
     s->top_element = new_top;
     /// Return given element as new top value from the given Stack
     return s->top_element->value;
+}
+
+/**
+    @return
+        Returns the number of elements in given Stack.
+*/
+int cc_stack_size(Stack* s)
+{
+    /// Return 0 if Stack is empty
+    if (cc_stack_is_empty(s)) return 0;
+
+    /// Take head
+    StackElement *current = s->top_element;
+    /// Stack size
+    int stack_size = 1;
+    while (current->element_under)
+    {
+        current = current->element_under;
+        stack_size++;
+    }
+    /// Return Stack size
+    return stack_size;
 }
 
 #endif // KD_CCOLLECTIONS_STACK

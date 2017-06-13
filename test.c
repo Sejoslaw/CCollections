@@ -3,6 +3,7 @@
 
 #include "List.h"
 #include "Stack.h"
+#include "Queue.h"
 
 int main(int argc, char *argv[])
 {
@@ -65,13 +66,23 @@ int main(int argc, char *argv[])
 #if 0
     /// Stack Test
     Stack *stack = cc_stack_new();
-    printf("Is Stack empty ? => %i\n", cc_stack_empty(stack));
+    printf("Is Stack empty ? => %i\n", cc_stack_is_empty(stack));
     for (int i = 0; i < 10; ++i)
         cc_stack_push(stack, i);
-    printf("Is Stack empty ? => %i\n", cc_stack_empty(stack));
+    printf("Is Stack empty ? => %i\n", cc_stack_is_empty(stack));
     printf("Current top value (peek) = %i\n", cc_stack_peek(stack));
     printf("Current top value (pop) = %i\n", cc_stack_pop(stack));
     printf("Current top value (peek) = %i\n", cc_stack_peek(stack));
+#endif
+
+#if 1
+    /// Queue Test
+    Queue* queue = cc_queue_new();
+    printf("Is Queue empty ? => %i\n", cc_queue_is_empty(queue));
+    for (int i = 0; i < 10; ++i)
+        cc_queue_add(queue, i);
+    printf("Is Queue empty ? => %i\n", cc_queue_is_empty(queue));
+    printf("Queue size = %i\n", cc_queue_size(queue));
 #endif
 
     return 0;

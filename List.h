@@ -48,7 +48,7 @@ typedef struct List
 List* cc_list_new()
 {
     List *new_list = malloc(sizeof(List));
-    new_list->head = 0;
+    new_list->head = NULL;
 
     return new_list;
 }
@@ -128,7 +128,7 @@ CC_BOOL cc_list_add_list(List* l, List* collection)
 void cc_list_clear(List* l)
 {
     /// Remove the head pointer (set it to 0)
-    l->head = 0;
+    l->head = NULL;
 }
 
 /**
@@ -242,7 +242,7 @@ int cc_list_size(List* l)
         current = current->next;
         list_size++;
     }
-    /// Remove List size
+    /// Return List size
     return list_size;
 }
 
